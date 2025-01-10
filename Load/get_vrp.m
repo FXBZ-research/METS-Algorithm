@@ -20,7 +20,7 @@ switch INSTANCE
     case 9
         load("./Instances/15_9.mat", 'vrp')
     case 10
-        load("./Instances/15_91.mat", 'vrp')
+        load("./Instances/15_10.mat", 'vrp')
     case 11
         load("./Instances/25_1.mat", 'vrp')
     case 12
@@ -40,7 +40,7 @@ switch INSTANCE
     case 19
         load("./Instances/25_9.mat", 'vrp')
     case 20
-        load("./Instances/25_91.mat", 'vrp')
+        load("./Instances/25_10.mat", 'vrp')
     case 21
         load("./Instances/50_1.mat", 'vrp')
     case 22
@@ -60,7 +60,7 @@ switch INSTANCE
     case 29
         load("./Instances/50_9.mat", 'vrp')
     case 30
-        load("./Instances/50_91.mat", 'vrp')
+        load("./Instances/50_10.mat", 'vrp')
     case 31
         load("./Instances/100_1.mat", 'vrp')
     case 32
@@ -80,7 +80,7 @@ switch INSTANCE
     case 39
         load("./Instances/100_9.mat", 'vrp')
     case 40
-        load("./Instances/100_91.mat", 'vrp')
+        load("./Instances/100_10.mat", 'vrp')
     case 41
         load("./Instances/jd200/jd200_1.mat", 'vrp')
     case 42
