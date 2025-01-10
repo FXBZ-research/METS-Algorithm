@@ -1,0 +1,132 @@
+function vrp = get_vrp(INSTANCE)
+
+switch INSTANCE
+    case 1
+        load("./Instances/15_1.mat", 'vrp')
+    case 2
+        load("./Instances/15_2.mat", 'vrp')
+    case 3
+        load("./Instances/15_3.mat", 'vrp')
+    case 4
+        load("./Instances/15_4.mat", 'vrp')
+    case 5
+        load("./Instances/15_5.mat", 'vrp')
+    case 6
+        load("./Instances/15_6.mat", 'vrp')
+    case 7
+        load("./Instances/15_7.mat", 'vrp')
+    case 8
+        load("./Instances/15_8.mat", 'vrp')
+    case 9
+        load("./Instances/15_9.mat", 'vrp')
+    case 10
+        load("./Instances/15_91.mat", 'vrp')
+    case 11
+        load("./Instances/25_1.mat", 'vrp')
+    case 12
+        load("./Instances/25_2.mat", 'vrp')
+    case 13
+        load("./Instances/25_3.mat", 'vrp')
+    case 14
+        load("./Instances/25_4.mat", 'vrp')
+    case 15
+        load("./Instances/25_5.mat", 'vrp')
+    case 16
+        load("./Instances/25_6.mat", 'vrp')
+    case 17
+        load("./Instances/25_7.mat", 'vrp')
+    case 18
+        load("./Instances/25_8.mat", 'vrp')
+    case 19
+        load("./Instances/25_9.mat", 'vrp')
+    case 20
+        load("./Instances/25_91.mat", 'vrp')
+    case 21
+        load("./Instances/50_1.mat", 'vrp')
+    case 22
+        load("./Instances/50_2.mat", 'vrp')
+    case 23
+        load("./Instances/50_3.mat", 'vrp')
+    case 24
+        load("./Instances/50_4.mat", 'vrp')
+    case 25
+        load("./Instances/50_5.mat", 'vrp')
+    case 26
+        load("./Instances/50_6.mat", 'vrp')
+    case 27
+        load("./Instances/50_7.mat", 'vrp')
+    case 28
+        load("./Instances/50_8.mat", 'vrp')
+    case 29
+        load("./Instances/50_9.mat", 'vrp')
+    case 30
+        load("./Instances/50_91.mat", 'vrp')
+    case 31
+        load("./Instances/100_1.mat", 'vrp')
+    case 32
+        load("./Instances/100_2.mat", 'vrp')
+    case 33
+        load("./Instances/100_3.mat", 'vrp')
+    case 34
+        load("./Instances/100_4.mat", 'vrp')
+    case 35
+        load("./Instances/100_5.mat", 'vrp')
+    case 36
+        load("./Instances/100_6.mat", 'vrp')
+    case 37
+        load("./Instances/100_7.mat", 'vrp')
+    case 38
+        load("./Instances/100_8.mat", 'vrp')
+    case 39
+        load("./Instances/100_9.mat", 'vrp')
+    case 40
+        load("./Instances/100_91.mat", 'vrp')
+    case 41
+        load("./Instances/jd200/jd200_1.mat", 'vrp')
+    case 42
+        load("./Instances/jd200/jd200_2.mat", 'vrp')
+    case 43
+        load("./Instances/jd200/jd200_3.mat", 'vrp')
+    case 44
+        load("./Instances/jd200/jd200_4.mat", 'vrp')
+
+    case 45
+        load("./Instances/jd400/jd400_1.mat", 'vrp')
+    case 46
+        load("./Instances/jd400/jd400_2.mat", 'vrp')
+    case 47
+        load("./Instances/jd400/jd400_3.mat", 'vrp')
+    case 48
+        load("./Instances/jd400/jd400_4.mat", 'vrp')
+
+    case 49
+        load("./Instances/jd600/jd600_1.mat", 'vrp')
+    case 50
+        load("./Instances/jd600/jd600_2.mat", 'vrp')
+    case 51
+        load("./Instances/jd600/jd600_3.mat", 'vrp')
+    case 52
+        load("./Instances/jd600/jd600_4.mat", 'vrp')
+
+    case 53
+        load("./Instances/jd800/jd800_1.mat", 'vrp')
+    case 54
+        load("./Instances/jd800/jd800_2.mat", 'vrp')
+    case 55
+        load("./Instances/jd800/jd800_3.mat", 'vrp')
+    case 56
+        load("./Instances/jd800/jd800_4.mat", 'vrp')
+
+    case 57
+        load("./Instances/jd1000/jd1000_1.mat", 'vrp')
+    case 58
+        load("./Instances/jd1000/jd1000_2.mat", 'vrp')
+    case 59
+        load("./Instances/jd1000/jd1000_3.mat", 'vrp')
+    case 60
+        load("./Instances/jd1000/jd1000_4.mat", 'vrp')
+    otherwise
+        error('Invalid case number');
+end
+
+end

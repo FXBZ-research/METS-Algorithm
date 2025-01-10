@@ -1,0 +1,226 @@
+function [isSuccess,nbMoves,searchCompleted,yu,yv,whenLastModified,Penalty_all,Route_related,Node_related,afs_time_delay] = ...
+    Depot_m8(nodeU,nodeV,vrp,nbMoves,searchCompleted,tspid,par_hgs,whenLastModified,Penalty_all,Route_related,Node_related,afs_time_delay)
+% Neighborhood operator 8 (routeV(1))
+afs_swap = 0;
+isdelete = 0;
+% Retrieve basic information: speed and service time
+nbClients = vrp.nb_customer;
+everTime = vrp.T_Customer;
+speed = vrp.V_speed;
+V_Dmax = vrp.V_Dmax;
+T_max = vrp.T_max_V;
+T_Afs = vrp.T_Afs;
+C_Afs = vrp.C_Afs;
+% Retrieve the penalty
+wt = Penalty_all(1,1);
+wc = Penalty_all(1,2);
+wd = Penalty_all(1,3);
+wm = Penalty_all(1,4);
+pd_v = Route_related(:,[1,2]);
+pt_v = Route_related(:,3);
+pm = Penalty_all(2,4);
+pt = Penalty_all(2,1);
+pc = Penalty_all(2,2);
+pd = Penalty_all(2,3);
+% Retrieve the distance
+dAll = vrp.distance_table;
+distance_pre_su = Route_related(:,[6,7]);
+distance_pre = distance_pre_su(:,1);
+distance_su = distance_pre_su(:,2);
+% Retrieve the time
+time_v = Route_related(:,5);
+time_afs = Route_related(:,4);
+time_su = time_v - time_afs;
+% Node_related = [predecessors,successor,routeID,node_location];
+predecessors = Node_related(:,1);
+successor = Node_related(:,2);
+routeID = Node_related(:,3);
+node_location = Node_related(:,4)';
+% Retrieve information of nodeU: V, X, and Y
+nodeU_loc = node_location(nodeU);
+routeU = routeID(nodeU);
+preU = predecessors(nodeU);
+nodeX = successor(nodeU);
+if nodeX
+    suX = successor(nodeX);
+    nodeX_loc = node_location(nodeX);
+end
+
+nodeV_loc = node_location(nodeV);
+routeV = routeID(nodeV);
+nodeY = successor(nodeV);
+preV = predecessors(nodeV);
+if nodeY
+    suY = successor(nodeY);
+    nodeY_loc = node_location(nodeY);
+end
+yu = routeU;
+yv = routeV;
+if (routeV == routeU) || (nodeX == 0)
+    isSuccess = false;
+    return
+end
+d_xx = 0;
+xx(1)=nodeU;
+for i=2:sum(routeID == routeU)
+    if xx(i-1)==0
+        break
+    end
+    xx(i)=successor(xx(i-1));
+    if xx(i) ~= 0 && i ~= 2
+        d_xx=d_xx+dAll(xx(i)+1,xx(i-1)+1);
+    end
+end
+xx(xx==0)=[];
+xx(1)=[];
+if numel(xx) == 0
+    isSuccess = false;
+    return
+elseif numel(xx) ~= 0
+    if (max(node_location(xx)) ~= 100)
+        % Cost calculation
+        costOne = - d_xx - dAll(nodeU+1,nodeX+1) - dAll(xx(end)+1,1) + dAll(nodeU+1,1);
+        costTwo = + d_xx - dAll(1,nodeV+1) + dAll(xx(end)+1,1) + dAll(nodeX+1,nodeV+1);
+        if nodeX_loc == -1
+            distance_pre(routeU) = distance_pre(routeU) + costOne;
+            time_afs(routeU) = time_afs(routeU) + costOne/speed - (numel(xx)*everTime);
+
+        elseif nodeU_loc == 1
+            distance_su(routeU) = distance_su(routeU) + costOne;
+            time_su(routeU) = time_su(routeU) + costOne/speed - (numel(xx)*everTime);
+        end
+        if  nodeV_loc == -1
+            distance_pre(routeV) = distance_pre(routeV) + costTwo;
+            time_afs(routeV) = time_afs(routeV) + costTwo/speed + (numel(xx)*everTime);
+        elseif nodeV_loc == 1
+            distance_su(routeV) = distance_su(routeV) + costTwo;
+            time_su(routeV) = time_su(routeV) + costTwo/speed + (numel(xx)*everTime);
+        end
+        pd_v(routeU,1) = max(distance_pre(routeU) - V_Dmax,0);
+        pd_v(routeU,2) = max(distance_su(routeU) - V_Dmax,0);
+        pd_v(routeV,1) = max(distance_pre(routeV) - V_Dmax,0);
+        pd_v(routeV,2) = max(distance_su(routeV) - V_Dmax,0);
+        pd_now = wd*sum(sum(pd_v));
+        pt_v(routeU) = max(time_afs(routeU) + time_su(routeU) - vrp.T_max_V,0) ;
+        pt_v(routeV) = max(time_afs(routeV) + time_su(routeV) - vrp.T_max_V,0) ;
+        pt_now = wt*sum(pt_v);
+        time_v = time_afs + time_su;
+        [pc_now,afs_time_delay] = AFSdelay_new(time_afs(1:numel(node_location)-nbClients),time_v(1:numel(node_location)-nbClients),T_max,T_Afs,C_Afs,afs_time_delay);
+        pc_now = pc_now*wc;
+        pm_now = pm;
+        % Calculate delta
+        delta = costOne + costTwo + pm_now - pm + pt_now - pt + pc_now - pc + pd_now - pd;
+        if  delta > -0.000001
+            isSuccess = false;
+            return
+        end
+        % Predecessor and successor routeID
+        successor(nodeU) =  0;
+        predecessors(nodeV) = nodeX;
+        if nodeX,predecessors(xx(numel(xx))) = 0;
+            for i=1:numel(xx)-1
+                predecessors(xx(i)) = xx(i+1);
+            end
+        end
+        if nodeX,successor(xx(1)) = nodeV;
+            for i=2:numel(xx)
+                successor(xx(i)) = xx(i-1);
+            end
+        end
+        routeID(xx) = routeV;
+        node_location(xx) = nodeV_loc;
+    else
+        if  (max(node_location(routeID == routeV)) == 100)
+            isSuccess = false;
+            return
+        elseif (max(node_location(routeID == routeV)) ~= 100)
+            % Cost calculation
+            costOne = - d_xx - dAll(nodeU+1,nodeX+1) - dAll(xx(end)+1,1) + dAll(nodeU+1,1);
+            costTwo = + d_xx - dAll(1,nodeV+1) + dAll(xx(end)+1,1) + dAll(nodeX+1,nodeV+1);
+            d1u = distance_pre(routeU);
+            d2u = distance_su(routeU);
+            d1v = distance_pre(routeV);
+            d2v = distance_su(routeV);
+            t1u = time_afs(routeU);
+            t2u = time_su(routeU);
+            t1v = time_afs(routeV);
+            t2v = time_su(routeV);
+            distance_pre(routeU) = d1u + d2u + costOne;
+            distance_su(routeU) = 0;
+            time_su(routeU) = 0;
+            time_afs(routeU) = distance_pre(routeU)/speed + ((numel(routeID(routeID == routeU))-numel(xx))*everTime);
+            distance_pre(routeV) = d2u;
+            distance_su(routeV) = d1v + d2v + costTwo - distance_pre(routeV);
+            time_afs(routeV) = t2u - everTime;
+            time_v(routeV) = (d1v + d2v + costTwo)/speed + (numel(xx)*everTime) + numel(routeID(routeID == routeV))*everTime;
+            time_su(routeV) = time_v(routeV) - time_afs(routeV);
+            pd_v(routeU,1) = max(distance_pre(routeU) - V_Dmax,0);
+            pd_v(routeU,2) = max(distance_su(routeU) - V_Dmax,0);
+            pd_v(routeV,1) = max(distance_pre(routeV) - V_Dmax,0);
+            pd_v(routeV,2) = max(distance_su(routeV) - V_Dmax,0);
+            pd_now = wd*sum(sum(pd_v));
+            pt_v(routeU) = max(time_afs(routeU) + time_su(routeU) - vrp.T_max_V,0) ;
+            pt_v(routeV) = max(time_afs(routeV) + time_su(routeV) - vrp.T_max_V,0) ;
+            pt_now = wt*sum(pt_v);
+            time_v = time_afs + time_su;
+            [pc_now,afs_time_delay] = AFSdelay_new(time_afs([1:routeU-1,routeU+1:end]),time_v([1:routeU-1,routeU+1:end]),T_max,T_Afs,C_Afs,afs_time_delay);
+            pc_now = pc_now*wc;
+            pm_now = pm;
+            % Calculate delta
+            delta = costOne + costTwo + pm_now - pm + pt_now - pt + pc_now - pc + pd_now - pd;
+            if  delta > -0.000001
+                isSuccess = false;
+                return
+            end
+            % Predecessor and successor routeID
+            successor(nodeU) =  0;
+            predecessors(nodeV) = nodeX;
+            if nodeX,predecessors(xx(numel(xx))) = 0;
+                for i=1:numel(xx)-1
+                    predecessors(xx(i)) = xx(i+1);
+                end
+            end
+            if nodeX,successor(xx(1)) = nodeV;
+                for i=2:numel(xx)
+                    successor(xx(i)) = xx(i-1);
+                end
+            end
+            node_location(xx) = -node_location(xx);
+            node_location(routeID==routeV) = 1;
+            node_location(node_location==-100) = 100;
+            routeID(xx) = routeV;
+            afs_swap  = 1;
+        end
+    end
+end
+%% Update related matrix information
+% Update node-related matrices
+node_location = node_location';
+Node_related = [predecessors,successor,routeID,node_location];
+% Update route-related matrices
+distance_pre_su = [distance_pre,distance_su];
+Route_related = [pd_v,pt_v,time_afs,time_v,distance_pre_su];
+if afs_swap  == 1
+    routeID = Node_related(:,3);
+    routeID(routeID == routeV) = -1;
+    routeID(routeID == routeU) = routeV;
+    routeID(routeID == -1) = routeU;
+    Node_related(:,3) = routeID;
+    a = Route_related(routeU,:);
+    Route_related(routeU,:) = Route_related(routeV,:);
+    Route_related(routeV,:) = a;
+end
+% Update penalty-related matrices
+Penalty_all(2,4) = pm_now;
+Penalty_all(2,1) = pt_now;
+Penalty_all(2,2) = pc_now;
+Penalty_all(2,3) = pd_now;
+% Update nbMoves and set searchCompleted to false
+nbMoves = nbMoves + 1;
+searchCompleted = false;
+% Update whenLastModified
+whenLastModified(routeU) = nbMoves;
+whenLastModified(routeV) = nbMoves;
+% Update isSuccess to indicate success
+isSuccess = true;
+end

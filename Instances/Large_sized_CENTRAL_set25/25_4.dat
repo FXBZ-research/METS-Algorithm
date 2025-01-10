@@ -1,0 +1,40 @@
+ID 	 Type 	 Longitude 	 Latitude
+D 	 d 	 0.00 	 80.00
+S1 	 f 	 0.00 	 0.00
+C1 	 c 	 26.53 	 -0.9
+C2 	 c 	 -25.24 	 2.42
+C3 	 c 	 -11.48 	 -3.98
+C4 	 c 	 -2.01 	 -7.78
+C5 	 c 	 11.3 	 -8.94
+C6 	 c 	 4.12 	 -0.58
+C7 	 c 	 3.9 	 0.02
+C8 	 c 	 -14.15 	 -3.5
+C9 	 c 	 -8.16 	 -5.85
+C10 	 c 	 -3.15 	 -7.42
+C11 	 c 	 -4.06 	 -6.1
+C12 	 c 	 -6.6 	 -9.32
+C13 	 c 	 25.43 	 1.92
+C14 	 c 	 23.02 	 -3.24
+C15 	 c 	 27.92 	 0.59
+C16 	 c 	 2.15 	 -3.57
+C17 	 c 	 6.79 	 -0.42
+C18 	 c 	 -11.17 	 -3.07
+C19 	 c 	 -23.18 	 4.0
+C20 	 c 	 -23.75 	 4.13
+C21 	 c 	 -29.5 	 1.53
+C22 	 c 	 8.08 	 -3.6
+C23 	 c 	 0.7 	 1.86
+C24 	 c 	 10.8 	 -9.32
+C25 	 c 	 9.18 	 -6.41
+
+
+Q Vehicle fuel tank capacity /32.0/
+r fuel consumption rate /0.2/
+TL TourLength /7.5/
+v average Velocity /40.0/
+m numVeh /7/
+seed for generator /2510/
+
+pStart /0/
+pAfs /0.5/
+pClient /0.5/
