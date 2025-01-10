@@ -44,7 +44,16 @@ The METS algorithm incorporates three novel features to address the unique chall
    test;
 
 ## Test Instances
-Test instances are located in the METS\Instances folder. You can adjust the parameters in the METS\test.m file to run the algorithm with different instances.
+The test instances are located in the `METS\Instances` folder. These include:
+
+- **Instances with 15 to 100 customers**: These instances are based on the public instances from the following reference:  
+  *Bruglieri, M., Ferone, D., Festa, P. & Pisacane, O. (2022). A GRASP with penalty objective function for the Green Vehicle Routing Problem with Private Capacitated Stations, to appear on Computers and Operations Research.*  
+  We provide `.mat` files that include all necessary information from the referenced instances.
+
+- **New larger instances**: We also introduce a new set of larger instances, based on real-world data from JD Logistics, with up to 1,000 customers.
+
+You can adjust the parameters in the `METS\test.m` file to run the algorithm on different instances.
+
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
