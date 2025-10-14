@@ -80,13 +80,13 @@ You can adjust the parameters in the `METS\test.m` file to run the algorithm on 
 Two independent Python models are provided for reproducing the mathematical formulations and solver integrations described in the paper:
 
 File	Description
-GrVRP_PCAFS_MILP.py — Implements the MILP formulation of the GrVRP-PCAFS for direct use with Hexaly (a general-purpose global optimization solver). This version closely follows the mathematical formulation presented in Appendix D of the manuscript.
-GrVRP_PCAFS_HEXALY.py — Implements the Hexaly-preferred formulation, leveraging Hexaly’s native modeling features (sets, lists and arrays). This version follows the solver-recommended modeling practices for routing problems. 
+GrVRP_PCAFS_MILP.py — Implements the MILP formulation of the GrVRP-PCAFS for direct use with Hexaly (a general-purpose global optimization solver). 
+GrVRP_PCAFS_HEXALY.py — Implements the Hexaly formulation, leveraging Hexaly’s native modeling features (sets, lists and arrays). This version follows the solver-recommended modeling practices for routing problems. 
 
 ## 🔧 Running the models
 Both scripts run independently on .mat instance files:
 
-1. **Run the Hexaly-preferred formulation**  
+1. **Run the Hexaly formulation**  
    ```bash
    cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
@@ -96,6 +96,7 @@ Both scripts run independently on .mat instance files:
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
