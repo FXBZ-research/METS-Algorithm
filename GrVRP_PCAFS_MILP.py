@@ -1,4 +1,4 @@
-# hexaly model for GVRP-PCAFS
+# milp model for GVRP-PCAFS
  # Call GrVRP_PCAFS_MILP.py:
  # cmd = [
  # sys.executable, # Python executable
