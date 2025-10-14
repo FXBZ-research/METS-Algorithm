@@ -1,59 +1,79 @@
-﻿# METS
+# METS: Memetic Search for the Green Vehicle Routing Problem with Private Capacitated Refueling Stations (GrVRP-PCAFS)
 
-METS is an open-source heuristic algorithm based on the Memetic framework, designed to solve the **Green Vehicle Routing Problem with Private Capacitated Refueling Stations (GVRP-PCRS)**. The algorithm is implemented in MATLAB and incorporates efficient segmentation and local search techniques to optimize complex vehicle routing problems.
+**METS** is an open-source **memetic algorithm (MA)** designed to solve the *Green Vehicle Routing Problem with Private Capacitated Alternative Fuel Stations (GrVRP-PCAFS)*.  
+It integrates **constraint-based tour segmentation**, **diversity–feasibility control**, and **efficient local search mechanisms** to optimize large-scale sustainable routing problems.
 
-## Project Structure
-The project is organized as follows:
-- **METS\Instances**: Contains test instances for the algorithm.
-- **METS\Load**: Includes programs for reading input data.
-- **METS\Two novel segmentation**: Contains two novel segmentation methods used in the solving process.
-- **METS\Efficient local search**: Stores the implementation of local search procedures to refine solutions.
-- **METS\Crossover select parents**: Includes code for crossover operations and parent selection.
-- **METS\Population management**: Contains code for managing the population during the optimization process.
-- **METS\test.m**: A small test program to verify the algorithm's functionality.
+---
 
-## Features
-The METS algorithm incorporates three novel features to address the unique challenges of the GVRP-PCAFS:
+## 🧩 Overview
 
-1. **Multiple Tour Segmentation**:
-   - Splits a giant tour into route-based solutions using different constraints as splitting criteria.
-   - Generates diverse solutions for population initialization and crossover operations, enhancing exploration capabilities.
+The GrVRP-PCAFS extends the classical green vehicle routing problem by considering the **limited capacity** of refueling or charging stations, where only a limited number of vehicles can refuel simultaneously while others must wait.  
+This creates additional challenges in managing **route duration limits**, **refueling schedules**, and **station congestion**.
 
-2. **Efficient Local Search with Novel Moves**:
-   - Integrates an AFS conditional rule (CAI rule) and four newly designed move operators to explore large solution neighborhoods.
-   - Utilizes a fast move evaluation technique with constant time complexity, significantly reducing computational overhead.
+**METS** addresses these challenges by balancing exploration and exploitation through three core components:
 
-3. **Comprehensive Fitness Evaluation**:
-   - Considers multiple factors, including constraint violations, AFS congestion levels, solution costs, and diversity contributions, to guide the search effectively.
+1. **Separate Constraint-based Tour Segmentation (SCTS)**  
+   Splits a giant tour into multiple feasible routes using a *single constraint* (either route duration or driving range).  
+   This separation promotes population diversity and exploration efficiency.
 
-### Key Achievements:
-- **Performance**: METS sets new best-known solutions in 31 out of 40 benchmark instances, outperforming all state-of-the-art algorithms.
-- **Problem Size Scalability**: Demonstrates superior results on small and large instances, including a new set of real-world instances with up to 1,000 customers.
-- **Generality**: The novel components of METS have potential applicability to a broader range of evolutionary vehicle routing problems.
+2. **Comprehensive Fitness Evaluation Function**  
+   Integrates route cost, constraint violations (overtime, over-mileage, and over-capacity), and diversity contribution.  
+   Adaptive penalty parameters dynamically control the trade-off between feasibility and diversity.
 
-## Installation and Usage
-1. Ensure MATLAB is installed on your system.
-2. Clone or download the repository:
+3. **Efficient Local Search with Conditional AFS Insertion (CAI)**  
+   Introduces CAI-based move operators that automatically decide when to insert refueling stations.  
+   Constant-time (\(O(1)\)) move evaluation significantly accelerates local search.
+
+---
+
+## 🚀 Features
+
+- **Exploration:**  
+  Diverse population generation via the SCTS strategy.
+
+- **Exploitation:**  
+  CAI-based local search with constant-time evaluation for efficient neighborhood exploration.
+
+- **Adaptivity:**  
+  Dynamic penalty control for constraint violations to maintain feasible yet diverse populations.
+
+- **Performance Highlights:**  
+  - Sets **31 new best-known solutions** across 40 public GrVRP-PCAFS benchmarks.  
+  - Outperforms GRASP, CP-Proactive, and the general-purpose Hexaly solver.  
+  - Scales to **1,000-customer real-world instances** from JD Logistics.
+
+---
+
+## ⚙️ Installation & Usage
+
+1. **Prerequisites**  
+   MATLAB R2022a or later is required.
+
+2. **Clone the repository**
    ```bash
    git clone https://github.com/Fanxing1999/METS.git
-3. Add the project folder to MATLAB's path：
+   
+3. **Add the project folder to MATLAB's path**
    ```bash
    addpath(genpath('METS'));
-4. Run the test program to verify the setup
+4. **Run the test program to verify the setup**
    ```bash
    test;
 
 ## Test Instances
 The test instances are located in the `METS\Instances` folder. These include:
 
-- **Instances with 15 to 100 customers**: These instances are based on the public instances from the following reference:  
+- **Instances with 15 to 100 customers**:
+  These instances are based on the public instances from the following reference:  
   *Bruglieri, M., Ferone, D., Festa, P. & Pisacane, O. (2022). A GRASP with penalty objective function for the Green Vehicle Routing Problem with Private Capacitated Stations, to appear on Computers and Operations Research.*  
   We provide `.mat` files that include all necessary information from the referenced instances.
 
-- **New larger instances**: We also introduce a new set of larger instances, based on real-world data from JD Logistics, with up to 1,000 customers.
+- **New larger instances**:
+  A newly introduced large-scale benchmark set based on real-world data from Beijing. 
+  It represents realistic urban delivery scenarios, with customer sizes ranging from 200 to 1,000.
+  This set enables evaluation of algorithm scalability under real-world operational constraints.
 
 You can adjust the parameters in the `METS\test.m` file to run the algorithm on different instances.
-
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
