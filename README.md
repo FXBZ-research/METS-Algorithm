@@ -88,16 +88,17 @@ Both scripts run independently on .mat instance files:
 
 1. **Run the Hexaly-preferred formulation**  
    ```bash
-cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
+   cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
 2. **Run the direct MILP formulation**  
    ```bash
-cmd = [sys.executable, "GrVRP_PCAFS_MILP.py",
+   cmd = [sys.executable, "GrVRP_PCAFS_MILP.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
