@@ -90,18 +90,13 @@ Both scripts run independently on .mat instance files:
 cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
-2. **Run the Hexaly-preferred formulation**  
-cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
-       "--mat_file", mat_path, "--time_limit", str(time_limit)]
-
-
-## Run the direct MILP formulation
+2. **Run the direct MILP formulation**  
 cmd = [sys.executable, "GrVRP_PCAFS_MILP.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
-
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
