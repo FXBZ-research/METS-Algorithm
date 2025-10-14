@@ -74,7 +74,8 @@ The test instances are located in the `METS\Instances` folder. These include:
   This set enables evaluation of algorithm scalability under real-world operational constraints.
 
 You can adjust the parameters in the `METS\test.m` file to run the algorithm on different instances.
-⚙️ Solver Implementations (Python)
+
+## ⚙️ Solver Implementations (Python)
 
 Two independent Python models are provided for reproducing the mathematical formulations and solver integrations described in the paper:
 
@@ -85,23 +86,14 @@ GrVRP_PCAFS_HEXALY.py	Implements the Hexaly-compliant formulation that leverages
 Both scripts can be executed independently using .mat instance files as inputs.
 They allow users to compare solver performance between the classical MILP formulation and the Hexaly-specific model, highlighting the differences in modeling structure and computational behavior.
 
- # hexaly model for GrVRP-PCAFS
- # Call GrVRP_PCAFS_HEXALY.py:
- # cmd = [
- # sys.executable, # Python executable
- # "GrVRP_PCAFS_HEXALY.py", # script file
- # "--mat_file", mat_path, # input .mat instance
- # "--time_limit", str(time_limit) # time limit ]
+Call GrVRP_PCAFS_HEXALY.py:
+cmd = [ sys.executable, "GrVRP_PCAFS_HEXALY.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
- # milp model for GrVRP-PCAFS
- # Call GrVRP_PCAFS_MILP.py:
- # cmd = [
- # sys.executable, # Python executable
- # "GrVRP_PCAFS_MILP.py", # script file
- # "--mat_file", mat_path, # input .mat instance
- # "--time_limit", str(time_limit) # time limit ]
+Call GrVRP_PCAFS_MILP.py:
+cmd = [ sys.executable, "GrVRP_PCAFS_MILP.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
