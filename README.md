@@ -84,11 +84,16 @@ GrVRP_PCAFS_MILP.py — Implements the MILP formulation of the GrVRP-PCAFS for d
 GrVRP_PCAFS_HEXALY.py — Implements the Hexaly-preferred formulation, leveraging Hexaly’s native modeling features (sets, lists and arrays). This version follows the solver-recommended modeling practices for routing problems. 
 
 ## 🔧 Running the models
-Both scripts run independently on .mat instance files.
+Both scripts run independently on .mat instance files:
 
-## Run the Hexaly-preferred formulation
+1. **Run the Hexaly-preferred formulation**  
 cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
+
+2. **Run the Hexaly-preferred formulation**  
+cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
+       "--mat_file", mat_path, "--time_limit", str(time_limit)]
+
 
 ## Run the direct MILP formulation
 cmd = [sys.executable, "GrVRP_PCAFS_MILP.py",
@@ -97,6 +102,7 @@ cmd = [sys.executable, "GrVRP_PCAFS_MILP.py",
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
