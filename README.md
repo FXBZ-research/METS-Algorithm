@@ -80,20 +80,22 @@ You can adjust the parameters in the `METS\test.m` file to run the algorithm on 
 Two independent Python models are provided for reproducing the mathematical formulations and solver integrations described in the paper:
 
 File	Description
-GrVRP_PCAFS_MILP.py	Implements the MILP formulation of the GrVRP-PCAFS for direct use with standard MILP solvers. This version closely follows the mathematical model presented in Appendix D of the paper.
-GrVRP_PCAFS_HEXALY.py	Implements the Hexaly-compliant formulation that leverages Hexaly’s advanced modeling features — including sets, lists, and cumulative resource constraints — for pump-level capacity and waiting-time modeling.
+GrVRP_PCAFS_MILP.py — Implements the MILP formulation of the GrVRP-PCAFS for direct use with Hexaly (a general-purpose global optimization solver). This version closely follows the mathematical formulation presented in Appendix D of the manuscript.
+GrVRP_PCAFS_HEXALY.py — Implements the Hexaly-preferred formulation, leveraging Hexaly’s native modeling features (sets, lists and arrays). This version follows the solver-recommended modeling practices for routing problems. 
 
-Both scripts can be executed independently using .mat instance files as inputs.
-They allow users to compare solver performance between the classical MILP formulation and the Hexaly-specific model, highlighting the differences in modeling structure and computational behavior.
+# 🔧 Running the models
+Both scripts run independently on .mat instance files.
 
-Call GrVRP_PCAFS_HEXALY.py:
-cmd = [ sys.executable, "GrVRP_PCAFS_HEXALY.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
+# Run the Hexaly-preferred formulation
+cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
-Call GrVRP_PCAFS_MILP.py:
-cmd = [ sys.executable, "GrVRP_PCAFS_MILP.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
+# Run the direct MILP formulation
+cmd = [sys.executable, "GrVRP_PCAFS_MILP.py", "--mat_file", mat_path, "--time_limit", str(time_limit)]
+
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
