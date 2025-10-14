@@ -86,17 +86,18 @@ GrVRP_PCAFS_HEXALY.py — Implements the Hexaly-preferred formulation, leveragin
 ## 🔧 Running the models
 Both scripts run independently on .mat instance files.
 
-# Run the Hexaly-preferred formulation
+## Run the Hexaly-preferred formulation
 cmd = [sys.executable, "GrVRP_PCAFS_HEXALY.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
-# Run the direct MILP formulation
+## Run the direct MILP formulation
 cmd = [sys.executable, "GrVRP_PCAFS_MILP.py",
        "--mat_file", mat_path, "--time_limit", str(time_limit)]
 
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
