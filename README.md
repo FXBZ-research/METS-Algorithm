@@ -10,6 +10,85 @@ It integrates **separate constraint-based tour segmentation**, **diversity–fea
 Above all, our paper on **METS** has now been published in **IEEE Transactions on Evolutionary Computation**.  
 If you use METS in your research, please kindly **cite our work** — this is very important for us. Thank you!
 
+---
+
+<details>
+<summary><strong>📄 Plain Text</strong></summary>
+
+R. Xu, X. Fan, S. Liu, W. Chen and K. Tang, "Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations," in *IEEE Transactions on Evolutionary Computation*, doi: 10.1109/TEVC.2025.3639252.
+
+</details>
+
+---
+
+<details>
+<summary><strong>📚 BibTeX</strong></summary>
+
+```bibtex
+@ARTICLE{11271862,
+  author={Xu, Rui and Fan, Xing and Liu, Shengcai and Chen, Wenjie and Tang, Ke},
+  journal={IEEE Transactions on Evolutionary Computation}, 
+  title={Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Benchmark testing;Vehicle routing;Memetics;Fuels;Evolutionary computation;Logistics;Green products;Energy states;Search problems;Urban areas;Private capacitated alternative fuel stations;green vehicle routing problem;memetic algorithms;alternative fuel vehicle},
+  doi={10.1109/TEVC.2025.3639252}
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>📑 RIS</strong></summary>
+
+```ris
+TY  - JOUR
+AU  - Xu, Rui
+AU  - Fan, Xing
+AU  - Liu, Shengcai
+AU  - Chen, Wenjie
+AU  - Tang, Ke
+TI  - Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations
+JO  - IEEE Transactions on Evolutionary Computation
+PY  - 2025
+DO  - 10.1109/TEVC.2025.3639252
+ER  - 
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>🔖 EndNote / RefWorks (ENW)</strong></summary>
+
+```enw
+%0 Journal Article
+%A Xu, Rui
+%A Fan, Xing
+%A Liu, Shengcai
+%A Chen, Wenjie
+%A Tang, Ke
+%T Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations
+%J IEEE Transactions on Evolutionary Computation
+%D 2025
+%R 10.1109/TEVC.2025.3639252
+```
+
+</details>
+
+---
+
+**📌 Published paper:**  
+https://ieeexplore.ieee.org/document/11271862
+
+
+
+
 ```bibtex
 @ARTICLE{11271862,
   author={Xu, Rui and Fan, Xing and Liu, Shengcai and Chen, Wenjie and Tang, Ke},
@@ -119,6 +198,7 @@ Both scripts run independently on .mat instance files:
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
