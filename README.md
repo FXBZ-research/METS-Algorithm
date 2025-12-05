@@ -3,6 +3,28 @@
 **METS** is an open-source **memetic algorithm (MA)** designed to solve the *Green Vehicle Routing Problem with Private Capacitated Alternative Fuel Stations (GrVRP-PCAFS)*.  
 It integrates **separate constraint-based tour segmentation**, **diversity–feasibility control**, and **efficient local search with constant-time evaluation mechanisms** to optimize large-scale sustainable routing problems.
 
+
+---
+## 📢 Citation Notice (Please Read)
+
+Above all, our paper on **METS** has now been published in **IEEE Transactions on Evolutionary Computation**.  
+If you use METS in your research, please kindly **cite our work** — this is very important for us. Thank you!
+
+```bibtex
+@ARTICLE{11271862,
+  author={Xu, Rui and Fan, Xing and Liu, Shengcai and Chen, Wenjie and Tang, Ke},
+  journal={IEEE Transactions on Evolutionary Computation}, 
+  title={Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Benchmark testing;Vehicle routing;Memetics;Fuels;Evolutionary computation;Logistics;Green products;Energy states;Search problems;Urban areas;Private capacitated alternative fuel stations;green vehicle routing problem;memetic algorithms;alternative fuel vehicle},
+  doi={10.1109/TEVC.2025.3639252}
+}
+**📌 Published paper:**  
+https://ieeexplore.ieee.org/document/11271862
+
 ---
 
 ## 🧩 Overview
@@ -96,6 +118,7 @@ Both scripts run independently on .mat instance files:
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
