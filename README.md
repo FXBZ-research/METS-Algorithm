@@ -13,9 +13,22 @@ If you use METS in your research, please kindly **cite our work** — this is ve
 ---
 
 <details>
-<summary><strong>📄 Plain Text</strong></summary>
+<summary><strong> Plain Text (IEEE)</strong></summary>
+  
+```plain text (IEEE)
+R. Xu, X. Fan, S. Liu, W. Chen and K. Tang, "Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations," in IEEE Transactions on Evolutionary Computation, doi: 10.1109/TEVC.2025.3639252.
+```
 
-R. Xu, X. Fan, S. Liu, W. Chen and K. Tang, "Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations," in *IEEE Transactions on Evolutionary Computation*, doi: 10.1109/TEVC.2025.3639252.
+</details>
+
+---
+
+<details>
+<summary><strong> GB/T 7714</strong></summary>
+  
+```GB/T 7714
+~~~
+```
 
 </details>
 
@@ -47,15 +60,24 @@ R. Xu, X. Fan, S. Liu, W. Chen and K. Tang, "Memetic Search for Green Vehicle Ro
 
 ```ris
 TY  - JOUR
-AU  - Xu, Rui
-AU  - Fan, Xing
-AU  - Liu, Shengcai
-AU  - Chen, Wenjie
-AU  - Tang, Ke
 TI  - Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations
-JO  - IEEE Transactions on Evolutionary Computation
+T2  - IEEE Transactions on Evolutionary Computation
+SP  - 1
+EP  - 1
+AU  - R. Xu
+AU  - X. Fan
+AU  - S. Liu
+AU  - W. Chen
+AU  - K. Tang
 PY  - 2025
 DO  - 10.1109/TEVC.2025.3639252
+JO  - IEEE Transactions on Evolutionary Computation
+IS  - 
+SN  - 1941-0026
+VO  - 
+VL  - 
+JA  - IEEE Transactions on Evolutionary Computation
+Y1  - 
 ER  - 
 ```
 
@@ -63,45 +85,6 @@ ER  -
 
 ---
 
-<details>
-<summary><strong>🔖 EndNote / RefWorks (ENW)</strong></summary>
-
-```enw
-%0 Journal Article
-%A Xu, Rui
-%A Fan, Xing
-%A Liu, Shengcai
-%A Chen, Wenjie
-%A Tang, Ke
-%T Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations
-%J IEEE Transactions on Evolutionary Computation
-%D 2025
-%R 10.1109/TEVC.2025.3639252
-```
-
-</details>
-
----
-
-**📌 Published paper:**  
-https://ieeexplore.ieee.org/document/11271862
-
-
-
-
-```bibtex
-@ARTICLE{11271862,
-  author={Xu, Rui and Fan, Xing and Liu, Shengcai and Chen, Wenjie and Tang, Ke},
-  journal={IEEE Transactions on Evolutionary Computation}, 
-  title={Memetic Search for Green Vehicle Routing Problem With Private Capacitated Refueling Stations}, 
-  year={2025},
-  volume={},
-  number={},
-  pages={1-1},
-  keywords={Benchmark testing;Vehicle routing;Memetics;Fuels;Evolutionary computation;Logistics;Green products;Energy states;Search problems;Urban areas;Private capacitated alternative fuel stations;green vehicle routing problem;memetic algorithms;alternative fuel vehicle},
-  doi={10.1109/TEVC.2025.3639252}
-}
-```
 **📌 Published paper:**  
 https://ieeexplore.ieee.org/document/11271862
 
@@ -198,6 +181,7 @@ Both scripts run independently on .mat instance files:
 
 ## License
 This project is licensed under the MIT License. For more details, see the LICENSE file.
+
 
 
 
